@@ -3,244 +3,375 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>registro de faltas - mi calendario</title>
+    <title>Calculhora - Manejá tus faltas inteligentemente</title>
+    <meta name="description" content="Sistema inteligente para gestionar faltas escolares. Calculá tu tiempo libre responsablemente.">
+    <meta name="theme-color" content="#f0fdfa">
+    
+    <!-- Preconnect para fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link el="stylesheet" href="css/estilos.css">
-    <link rel="stylesheet" href="css/componentes.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Anime.js para el widget tirabale -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/header/header.css">
+    <link rel="stylesheet" href="estilos/componentes/widget-tirabale.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/img/logos/calculhora.png" type="image/png">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Calculhora - Manejá tus faltas inteligentemente">
+    <meta property="og:description" content="Sistema inteligente para gestionar faltas escolares. Calculá tu tiempo libre responsablemente.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://calculhora.com">
+    <meta property="og:image" content="assets/img/og-image.jpg">
 </head>
-<body class="modo-claro">
-    <!-- encabezado principal -->
-    <header class="encabezado">
-        <div class="contenedor">
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-container">
+            <!-- Logo -->
             <div class="logo">
-                <h1>📅 registro de faltas</h1>
+                <img src="assets/img/logos/calculhora.png" alt="Calculhora Logo" class="logo-img">
             </div>
-            <div class="controles-encabezado">
-                <button class="boton-tema" id="cambiar-tema">
-                    <span class="icono-tema">🌙</span>
+            
+            <!-- Navegación Desktop -->
+            <nav class="nav-desktop">
+                <ul class="nav-list">
+                    <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                    <li><a href="#herramientas" class="nav-link">Herramientas</a></li>
+                    <li><a href="#como-funciona" class="nav-link">Cómo Funciona</a></li>
+                    <li><a href="#beneficios" class="nav-link">Beneficios</a></li>
+                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Botón CTA y Toggle de Tema -->
+            <div class="header-actions">
+                <!-- El toggle de tema se insertará aquí via JavaScript -->
+                <button class="btn-primary">🚀 Empezar Gratis</button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú de navegación">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </button>
             </div>
         </div>
+        
+        <!-- Navegación Mobile -->
+        <nav class="nav-mobile" id="navMobile">
+            <ul class="nav-mobile-list">
+                <li><a href="#inicio" class="nav-mobile-link">🏠 Inicio</a></li>
+                <li><a href="#herramientas" class="nav-mobile-link">🛠️ Herramientas</a></li>
+                <li><a href="#como-funciona" class="nav-mobile-link">⚙️ Cómo Funciona</a></li>
+                <li><a href="#beneficios" class="nav-mobile-link">✨ Beneficios</a></li>
+                <li><a href="#contacto" class="nav-mobile-link">📞 Contacto</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- navegacion principal -->
-    <nav class="navegacion">
-        <div class="contenedor">
-            <ul class="pestanas">
-                <li><button class="pestana activa" data-seccion="calendario">calendario</button></li>
-                <li><button class="pestana" data-seccion="notas">mis notas</button></li>
-                <li><button class="pestana" data-seccion="estadisticas">estadísticas</button></li>
-                <li><button class="pestana" data-seccion="ajustes">ajustes</button></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- contenido principal -->
-    <main class="contenido-principal">
-        <div class="contenedor">
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="main-content">
+        <!-- HERO SECTION -->
+        <section id="inicio" class="section">
+            <h1>📚 Manejá tus faltas,<br><span style="background: linear-gradient(135deg, #0d9488, #5eead4); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">a tu manera</span></h1>
+            <p class="lead">Faltar es una responsabilidad, pero cada responsabilidad viene con una libertad. Calculá inteligentemente cuándo podés faltar sin comprometer tu educación.</p>
             
-            <!-- seccion calendario -->
-            <section id="seccion-calendario" class="seccion activa">
-                <div class="encabezado-seccion">
-                    <h2>mi calendario de faltas</h2>
-                    <button class="boton-primario" id="abrir-modal-falta">
-                        ➕ registrar falta
-                    </button>
+            <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+                <button class="btn-special">✨ Probar Calculadora</button>
+                <button class="btn-outline">📖 Ver Demo</button>
+            </div>
+
+            <!-- Stats rápidas -->
+            <div style="margin-top: 3rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 2rem; max-width: 600px;">
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; font-weight: 800; color: var(--ocean-600);">20+</div>
+                    <div style="font-size: 0.875rem; color: var(--gray-600);">Faltas máximas</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; font-weight: 800; color: var(--ocean-600);">100%</div>
+                    <div style="font-size: 0.875rem; color: var(--gray-600);">Gratis</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; font-weight: 800; color: var(--ocean-600);">⚡</div>
+                    <div style="font-size: 0.875rem; color: var(--gray-600);">Instantáneo</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- HERRAMIENTAS -->
+        <section id="herramientas" class="section">
+            <h2>🛠️ Nuestras Herramientas</h2>
+            <p class="lead">Un sistema completo para gestionar tus faltas de manera inteligente</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                <div class="card">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">📊</div>
+                    <h3>Calculadora de Faltas</h3>
+                    <p>Calculá exactamente cuántas faltas podés tomar por materia sin perder la regularidad. Sistema inteligente que considera todas las variables.</p>
+                    <button class="btn-outline" style="margin-top: 1rem;">Usar Calculadora</button>
                 </div>
                 
-                <!-- controles del calendario -->
-                <div class="controles-calendario">
-                    <button class="boton-mes" id="mes-anterior">‹</button>
-                    <h3 class="titulo-mes" id="titulo-mes">agosto 2025</h3>
-                    <button class="boton-mes" id="mes-siguiente">›</button>
+                <div class="card card-ocean">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">📝</div>
+                    <h3>Registro de Faltas</h3>
+                    <p>Llevá un control detallado de todas tus faltas. Categorizá por motivo, materia y profesor para tener estadísticas precisas.</p>
+                    <button class="btn-primary" style="margin-top: 1rem;" onclick="window.location.href='calendario-faltas.html'">Registrar Faltas</button>
                 </div>
-
-                <!-- calendario -->
-                <div class="calendario">
-                    <div class="encabezados-dias">
-                        <div class="dia-semana">dom</div>
-                        <div class="dia-semana">lun</div>
-                        <div class="dia-semana">mar</div>
-                        <div class="dia-semana">mié</div>
-                        <div class="dia-semana">jue</div>
-                        <div class="dia-semana">vie</div>
-                        <div class="dia-semana">sáb</div>
-                    </div>
-                    <div class="dias-calendario" id="dias-calendario">
-                        <!-- los dias se generan con javascript -->
-                    </div>
+                
+                <div class="card">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">📈</div>
+                    <h3>Dashboard Inteligente</h3>
+                    <p>Visualizá tu progreso, tendencias y recomendaciones personalizadas para optimizar tu asistencia.</p>
+                    <button class="btn-outline" style="margin-top: 1rem;">Ver Dashboard</button>
                 </div>
-            </section>
-
-            <!-- seccion notas -->
-            <section id="seccion-notas" class="seccion">
-                <div class="encabezado-seccion">
-                    <h2>mis notas de faltas</h2>
-                    <div class="filtros-notas">
-                        <select class="selector-categoria" id="filtro-categoria">
-                            <option value="todas">todas las categorías</option>
-                            <option value="enfermedad">enfermedad</option>
-                            <option value="transporte">transporte</option>
-                            <option value="personal">asuntos personales</option>
-                            <option value="clima">clima</option>
-                            <option value="otro">otro</option>
-                        </select>
+            </div>
+        </section>
+        
+        <!-- CÓMO FUNCIONA -->
+        <section id="como-funciona" class="section">
+            <h2>⚙️ Cómo Funciona</h2>
+            <p class="lead">Simple, rápido y efectivo. En 3 pasos tenés todo bajo control.</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                <div style="text-align: center;">
+                    <div style="width: 80px; height: 80px; background: var(--gradient-ocean); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: white; font-size: 1.5rem; font-weight: 700;">1</div>
+                    <h3>Cargá tu Horario</h3>
+                    <p>Ingresá tu horario escolar, materias y profesores. Nuestro sistema se adapta a cualquier modalidad.</p>
+                </div>
+                
+                <div style="text-align: center;">
+                    <div style="width: 80px; height: 80px; background: var(--gradient-soft); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: var(--gray-700); font-size: 1.5rem; font-weight: 700;">2</div>
+                    <h3>Registrá tus Faltas</h3>
+                    <p>Cada vez que faltes, registralo en el sistema con motivo y detalles. Todo queda organizado automáticamente.</p>
+                </div>
+                
+                <div style="text-align: center;">
+                    <div style="width: 80px; height: 80px; background: var(--gradient-ocean); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: white; font-size: 1.5rem; font-weight: 700;">3</div>
+                    <h3>Decidí Inteligentemente</h3>
+                    <p>Consultá cuándo podés faltar sin riesgo. El sistema te da recomendaciones personalizadas.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- BENEFICIOS -->
+        <section id="beneficios" class="section">
+            <h2>✨ Beneficios de usar Calculhora</h2>
+            <p class="lead">Transformá la forma en que manejás tu asistencia escolar</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                <div class="card">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">🎯</div>
+                    <h3>Precisión Total</h3>
+                    <p>Calculá exactamente cuántas faltas podés tener sin perder la regularidad. Sin sorpresas, sin riesgos.</p>
+                </div>
+                
+                <div class="card card-special">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">⏰</div>
+                    <h3>Ahorrá Tiempo</h3>
+                    <p>No más planillas complicadas. Todo automatizado y al alcance de un click.</p>
+                </div>
+                
+                <div class="card">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">📱</div>
+                    <h3>Siempre Disponible</h3>
+                    <p>Accedé desde cualquier dispositivo, en cualquier momento. Tu información siempre segura.</p>
+                </div>
+                
+                <div class="card card-ocean">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">🔐</div>
+                    <h3>Datos Seguros</h3>
+                    <p>Tu información académica protegida con los más altos estándares de seguridad.</p>
+                </div>
+                
+                <div class="card">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">📊</div>
+                    <h3>Estadísticas Útiles</h3>
+                    <p>Visualizá patrones, tendencias y optimizá tu estrategia de asistencia.</p>
+                </div>
+                
+                <div class="card">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">🎓</div>
+                    <h3>Enfoque Educativo</h3>
+                    <p>Te ayudamos a ser responsable con tus estudios mientras manejás tu tiempo libre.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA SECTION -->
+        <section id="cta" class="section" style="background: var(--gradient-soft); text-align: center;">
+            <h2>🚀 ¿Listo para tomar el control?</h2>
+            <p class="lead">Empezá ahora mismo a gestionar tus faltas de manera inteligente</p>
+            
+            <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+                <button class="btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem;" onclick="window.location.href='calendario-faltas.html'">
+                    ✨ Comenzar Gratis
+                </button>
+                <button class="btn-outline" style="font-size: 1.1rem; padding: 1rem 2rem;">
+                    📞 Contactanos
+                </button>
+            </div>
+            
+            <p style="margin-top: 1.5rem; font-size: 0.875rem; color: var(--gray-600);">
+                💯 Gratis para siempre • 🔒 Datos seguros • ⚡ Sin instalación
+            </p>
+        </section>
+        
+        <!-- CONTACTO -->
+        <section id="contacto" class="section">
+            <h2>📞 Contacto</h2>
+            <p class="lead">¿Tenés alguna pregunta? ¡Estamos acá para ayudarte!</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; margin-top: 3rem;">
+                <!-- Info de contacto -->
+                <div>
+                    <h3>Hablemos</h3>
+                    <div style="margin-top: 1.5rem;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <div style="width: 40px; height: 40px; background: var(--ocean-100); border-radius: 50%; display: flex; align-items: center; justify-content: center;">📧</div>
+                            <div>
+                                <strong>Email</strong><br>
+                                <span style="color: var(--text-secondary);">hola@calculhora.com</span>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <div style="width: 40px; height: 40px; background: var(--ocean-100); border-radius: 50%; display: flex; align-items: center; justify-content: center;">💬</div>
+                            <div>
+                                <strong>WhatsApp</strong><br>
+                                <span style="color: var(--text-secondary);">+54 9 XXX XXX-XXXX</span>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <div style="width: 40px; height: 40px; background: var(--ocean-100); border-radius: 50%; display: flex; align-items: center; justify-content: center;">📍</div>
+                            <div>
+                                <strong>Ubicación</strong><br>
+                                <span style="color: var(--text-secondary);">Rosario, Santa Fe, Argentina</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="lista-notas" id="lista-notas">
-                    <!-- ejemplo de tarjeta de nota -->
-                    <article class="tarjeta-nota">
-                        <div class="encabezado-nota">
-                            <span class="fecha-nota">15 ago 2025</span>
-                            <span class="badge enfermedad">enfermedad</span>
+                <!-- Formulario -->
+                <div class="card">
+                    <h3>Envianos un mensaje</h3>
+                    <form style="margin-top: 1.5rem;" id="contactForm">
+                        <div style="margin-bottom: 1rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--text-primary);">Nombre</label>
+                            <input type="text" name="name" required style="padding: 0.75rem; border: 2px solid var(--input-border); border-radius: 0.5rem; font-size: 0.875rem;" placeholder="Tu nombre">
                         </div>
-                        <p class="texto-nota">dolor de cabeza muy fuerte, no pude asistir a clases</p>
-                        <div class="acciones-nota">
-                            <button class="boton-secundario">editar</button>
-                            <button class="boton-eliminar">eliminar</button>
+                        
+                        <div style="margin-bottom: 1rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--text-primary);">Email</label>
+                            <input type="email" name="email" required style="padding: 0.75rem; border: 2px solid var(--input-border); border-radius: 0.5rem; font-size: 0.875rem;" placeholder="tu@email.com">
                         </div>
-                    </article>
-                </div>
-            </section>
-
-            <!-- seccion estadisticas -->
-            <section id="seccion-estadisticas" class="seccion">
-                <h2>mis estadísticas</h2>
-                
-                <div class="resumen-estadisticas">
-                    <div class="tarjeta-estadistica">
-                        <h3>total faltas</h3>
-                        <div class="numero-grande">12</div>
-                        <p class="texto-pequeno">este mes</p>
-                    </div>
-                    <div class="tarjeta-estadistica">
-                        <h3>categoría más común</h3>
-                        <div class="numero-grande">enfermedad</div>
-                        <p class="texto-pequeno">5 faltas</p>
-                    </div>
-                    <div class="tarjeta-estadistica">
-                        <h3>días consecutivos</h3>
-                        <div class="numero-grande">3</div>
-                        <p class="texto-pequeno">máximo</p>
-                    </div>
-                </div>
-
-                <div class="grafico-placeholder">
-                    <p>aquí iría el gráfico de faltas por mes</p>
-                </div>
-            </section>
-
-            <!-- seccion ajustes -->
-            <section id="seccion-ajustes" class="seccion">
-                <h2>configuración</h2>
-                
-                <div class="grupo-ajustes">
-                    <h3>categorías personalizadas</h3>
-                    <div class="lista-categorias">
-                        <div class="categoria-item">
-                            <span class="badge enfermedad">enfermedad</span>
-                            <button class="boton-eliminar">x</button>
+                        
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--text-primary);">Mensaje</label>
+                            <textarea name="message" required rows="4" style="padding: 0.75rem; border: 2px solid var(--input-border); border-radius: 0.5rem; font-size: 0.875rem; resize: vertical;" placeholder="Contanos en qué podemos ayudarte..."></textarea>
                         </div>
-                        <div class="categoria-item">
-                            <span class="badge transporte">transporte</span>
-                            <button class="boton-eliminar">x</button>
-                        </div>
-                    </div>
-                    <button class="boton-secundario">+ agregar categoría</button>
+                        
+                        <button type="submit" class="btn-primary" style="width: 100%;">
+                            🚀 Enviar Mensaje
+                        </button>
+                    </form>
                 </div>
-
-                <div class="grupo-ajustes">
-                    <h3>exportar datos</h3>
-                    <button class="boton-primario">descargar como json</button>
-                </div>
-            </section>
-        </div>
+            </div>
+        </section>
     </main>
 
-    <!-- biografia del desarrollador -->
-    <footer class="pie-pagina">
-        <div class="contenedor">
-            <div class="biografia">
-                <h3>sobre el desarrollador</h3>
-                <p>soy un estudiante de desarrollo web apasionado por crear aplicaciones útiles. 
-                este calendario de faltas es uno de mis proyectos para practicar html, css y javascript. 
-                me especializo en interfaces de usuario responsivas y amigables. 
-                mi objetivo es convertirme en un desarrollador full-stack profesional.</p>
-                <div class="tecnologias">
-                    <span class="badge-tech">html5</span>
-                    <span class="badge-tech">css3</span>
-                    <span class="badge-tech">javascript</span>
-                    <span class="badge-tech">responsive design</span>
+    <!-- FOOTER -->
+    <footer style="background: var(--bg-tertiary); color: var(--text-secondary); padding: 3rem 1rem 2rem; text-align: center; border-top: 1px solid var(--border-light);">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div style="margin-bottom: 2rem;">
+                <img src="assets/img/logos/calculhora.png" alt="Calculhora" style="height: 40px; opacity: 0.8;">
+            </div>
+            
+            <!-- Widget Tirabale - Easter Egg -->
+            <div id="widget-container" style="position: relative; margin-bottom: 2rem;">
+                <div id="reloj-tirabale" class="reloj-widget" title="¡Arrastrá y soltá el reloj!">
+                    ⏰
                 </div>
+                <div id="mensaje-rebote" class="mensaje-rebote">
+                    ¡Auch! 😵
+                </div>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+                <div>
+                    <h4 style="color: var(--text-primary); margin-bottom: 1rem;">Producto</h4>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <a href="#herramientas" style="color: var(--text-secondary); text-decoration: none; transition: var(--transition);">Herramientas</a>
+                        <a href="#como-funciona" style="color: var(--text-secondary); text-decoration: none; transition: var(--transition);">Cómo Funciona</a>
+                        <a href="#beneficios" style="color: var(--text-secondary); text-decoration: none; transition: var(--transition);">Beneficios</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 style="color: var(--text-primary); margin-bottom: 1rem;">Soporte</h4>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <a href="#contacto" style="color: var(--text-secondary); text-decoration: none; transition: var(--transition);">Contacto</a>
+                        <a href="#" style="color: var(--text-secondary); text-decoration: none; transition: var(--transition);">FAQ</a>
+                        <a href="#" style="color: var(--text-secondary); text-decoration: none; transition: var(--transition);">Guías</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 style="color: var(--text-primary); margin-bottom: 1rem;">Legal</h4>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <a href="#" style="color: var(--text-secondary); text-decoration: none; transition: var(--transition);">Privacidad</a>
+                        <a href="#" style="color: var(--text-secondary); text-decoration: none; transition: var(--transition);">Términos</a>
+                        <a href="#" style="color: var(--text-secondary); text-decoration: none; transition: var(--transition);">Cookies</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 style="color: var(--text-primary); margin-bottom: 1rem;">Tema</h4>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem; align-items: center;">
+                        <span style="color: var(--text-secondary); font-size: 0.875rem;">Modo actual: <span id="current-theme-text">Claro</span></span>
+                        <button onclick="toggleTheme()" class="btn-outline" style="padding: 0.5rem 1rem; font-size: 0.75rem;">
+                            <span id="theme-toggle-text">🌙 Modo Oscuro</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="border-top: 1px solid var(--border-light); padding-top: 1.5rem; font-size: 0.875rem; color: var(--text-muted);">
+                <p>&copy; 2024 Calculhora. Hecho con 💚 en Rosario, Argentina.</p>
+                <p style="margin-top: 0.5rem; font-size: 0.75rem;">
+                    🌓 Atajo de teclado: <kbd style="background: var(--bg-quaternary); padding: 2px 6px; border-radius: 4px; font-size: 0.7rem;">Ctrl + Shift + T</kbd> para cambiar tema
+                </p>
+                <p style="margin-top: 0.5rem; font-size: 0.75rem; opacity: 0.7;">
+                    🎮 Easter egg: ¡Probá arrastrar el reloj! ⏰
+                </p>
             </div>
         </div>
     </footer>
 
-    <!-- modal registrar falta -->
-    <div class="modal-overlay" id="modal-falta">
-        <div class="modal">
-            <div class="encabezado-modal">
-                <h3>registrar nueva falta</h3>
-                <button class="boton-cerrar" id="cerrar-modal-falta">×</button>
-            </div>
-            <form class="formulario-falta" id="form-falta">
-                <div class="campo">
-                    <label for="fecha-falta">fecha de la falta</label>
-                    <input type="date" id="fecha-falta" name="fecha" required>
-                </div>
-                
-                <div class="campo">
-                    <label for="categoria-falta">categoría</label>
-                    <select id="categoria-falta" name="categoria" required>
-                        <option value="">seleccionar categoría</option>
-                        <option value="enfermedad">enfermedad</option>
-                        <option value="transporte">transporte</option>
-                        <option value="personal">asuntos personales</option>
-                        <option value="clima">clima</option>
-                        <option value="otro">otro</option>
-                    </select>
-                </div>
-                
-                <div class="campo">
-                    <label for="notas-falta">notas (opcional)</label>
-                    <textarea id="notas-falta" name="notas" placeholder="describe el motivo de la falta..."></textarea>
-                </div>
-                
-                <div class="acciones-modal">
-                    <button type="button" class="boton-secundario" id="cancelar-falta">cancelar</button>
-                    <button type="submit" class="boton-primario">guardar falta</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- modal detalles falta -->
-    <div class="modal-overlay" id="modal-detalles">
-        <div class="modal">
-            <div class="encabezado-modal">
-                <h3>detalles de la falta</h3>
-                <button class="boton-cerrar" id="cerrar-modal-detalles">×</button>
-            </div>
-            <div class="contenido-detalles">
-                <p><strong>fecha:</strong> <span id="detalle-fecha">15 de agosto, 2025</span></p>
-                <p><strong>categoría:</strong> <span id="detalle-categoria" class="badge enfermedad">enfermedad</span></p>
-                <p><strong>notas:</strong></p>
-                <p id="detalle-notas">dolor de cabeza muy fuerte, no pude asistir a clases</p>
-            </div>
-            <div class="acciones-modal">
-                <button class="boton-secundario">editar</button>
-                <button class="boton-eliminar">eliminar</button>
-            </div>
-        </div>
-    </div>
-
-    <script src="js/variables.js"></script>
-    <script src="js/funciones.js"></script>
-    <script src="js/calendario.js"></script>
-    <script src="js/main.js"></script>
+    <!-- JavaScript -->
+    <script src="js/themes/theme-toggle.js"></script>
+    <script src="js/header/header.js"></script>
+    <script src="js/componentes/widget-tirabale.js"></script>
+    
+    <!-- Script adicional para actualizar texto del footer -->
+    <script>
+        document.addEventListener('themeChange', (e) => {
+            const themeText = document.getElementById('current-theme-text');
+            const toggleText = document.getElementById('theme-toggle-text');
+            
+            if (e.detail.theme === 'dark') {
+                themeText.textContent = 'Oscuro';
+                toggleText.innerHTML = '☀️ Modo Claro';
+            } else {
+                themeText.textContent = 'Claro';
+                toggleText.innerHTML = '🌙 Modo Oscuro';
+            }
+        });
+    </script>
 </body>
 </html>
