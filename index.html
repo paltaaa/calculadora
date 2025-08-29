@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>registro de faltas - mi calendario</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link el="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/componentes.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="modo-claro">
+    <!-- encabezado principal -->
+    <header class="encabezado">
+        <div class="contenedor">
+            <div class="logo">
+                <h1>📅 registro de faltas</h1>
+            </div>
+            <div class="controles-encabezado">
+                <button class="boton-tema" id="cambiar-tema">
+                    <span class="icono-tema">🌙</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- navegacion principal -->
+    <nav class="navegacion">
+        <div class="contenedor">
+            <ul class="pestanas">
+                <li><button class="pestana activa" data-seccion="calendario">calendario</button></li>
+                <li><button class="pestana" data-seccion="notas">mis notas</button></li>
+                <li><button class="pestana" data-seccion="estadisticas">estadísticas</button></li>
+                <li><button class="pestana" data-seccion="ajustes">ajustes</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- contenido principal -->
+    <main class="contenido-principal">
+        <div class="contenedor">
+            
+            <!-- seccion calendario -->
+            <section id="seccion-calendario" class="seccion activa">
+                <div class="encabezado-seccion">
+                    <h2>mi calendario de faltas</h2>
+                    <button class="boton-primario" id="abrir-modal-falta">
+                        ➕ registrar falta
+                    </button>
+                </div>
+                
+                <!-- controles del calendario -->
+                <div class="controles-calendario">
+                    <button class="boton-mes" id="mes-anterior">‹</button>
+                    <h3 class="titulo-mes" id="titulo-mes">agosto 2025</h3>
+                    <button class="boton-mes" id="mes-siguiente">›</button>
+                </div>
+
+                <!-- calendario -->
+                <div class="calendario">
+                    <div class="encabezados-dias">
+                        <div class="dia-semana">dom</div>
+                        <div class="dia-semana">lun</div>
+                        <div class="dia-semana">mar</div>
+                        <div class="dia-semana">mié</div>
+                        <div class="dia-semana">jue</div>
+                        <div class="dia-semana">vie</div>
+                        <div class="dia-semana">sáb</div>
+                    </div>
+                    <div class="dias-calendario" id="dias-calendario">
+                        <!-- los dias se generan con javascript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- seccion notas -->
+            <section id="seccion-notas" class="seccion">
+                <div class="encabezado-seccion">
+                    <h2>mis notas de faltas</h2>
+                    <div class="filtros-notas">
+                        <select class="selector-categoria" id="filtro-categoria">
+                            <option value="todas">todas las categorías</option>
+                            <option value="enfermedad">enfermedad</option>
+                            <option value="transporte">transporte</option>
+                            <option value="personal">asuntos personales</option>
+                            <option value="clima">clima</option>
+                            <option value="otro">otro</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="lista-notas" id="lista-notas">
+                    <!-- ejemplo de tarjeta de nota -->
+                    <article class="tarjeta-nota">
+                        <div class="encabezado-nota">
+                            <span class="fecha-nota">15 ago 2025</span>
+                            <span class="badge enfermedad">enfermedad</span>
+                        </div>
+                        <p class="texto-nota">dolor de cabeza muy fuerte, no pude asistir a clases</p>
+                        <div class="acciones-nota">
+                            <button class="boton-secundario">editar</button>
+                            <button class="boton-eliminar">eliminar</button>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- seccion estadisticas -->
+            <section id="seccion-estadisticas" class="seccion">
+                <h2>mis estadísticas</h2>
+                
+                <div class="resumen-estadisticas">
+                    <div class="tarjeta-estadistica">
+                        <h3>total faltas</h3>
+                        <div class="numero-grande">12</div>
+                        <p class="texto-pequeno">este mes</p>
+                    </div>
+                    <div class="tarjeta-estadistica">
+                        <h3>categoría más común</h3>
+                        <div class="numero-grande">enfermedad</div>
+                        <p class="texto-pequeno">5 faltas</p>
+                    </div>
+                    <div class="tarjeta-estadistica">
+                        <h3>días consecutivos</h3>
+                        <div class="numero-grande">3</div>
+                        <p class="texto-pequeno">máximo</p>
+                    </div>
+                </div>
+
+                <div class="grafico-placeholder">
+                    <p>aquí iría el gráfico de faltas por mes</p>
+                </div>
+            </section>
+
+            <!-- seccion ajustes -->
+            <section id="seccion-ajustes" class="seccion">
+                <h2>configuración</h2>
+                
+                <div class="grupo-ajustes">
+                    <h3>categorías personalizadas</h3>
+                    <div class="lista-categorias">
+                        <div class="categoria-item">
+                            <span class="badge enfermedad">enfermedad</span>
+                            <button class="boton-eliminar">x</button>
+                        </div>
+                        <div class="categoria-item">
+                            <span class="badge transporte">transporte</span>
+                            <button class="boton-eliminar">x</button>
+                        </div>
+                    </div>
+                    <button class="boton-secundario">+ agregar categoría</button>
+                </div>
+
+                <div class="grupo-ajustes">
+                    <h3>exportar datos</h3>
+                    <button class="boton-primario">descargar como json</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- biografia del desarrollador -->
+    <footer class="pie-pagina">
+        <div class="contenedor">
+            <div class="biografia">
+                <h3>sobre el desarrollador</h3>
+                <p>soy un estudiante de desarrollo web apasionado por crear aplicaciones útiles. 
+                este calendario de faltas es uno de mis proyectos para practicar html, css y javascript. 
+                me especializo en interfaces de usuario responsivas y amigables. 
+                mi objetivo es convertirme en un desarrollador full-stack profesional.</p>
+                <div class="tecnologias">
+                    <span class="badge-tech">html5</span>
+                    <span class="badge-tech">css3</span>
+                    <span class="badge-tech">javascript</span>
+                    <span class="badge-tech">responsive design</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- modal registrar falta -->
+    <div class="modal-overlay" id="modal-falta">
+        <div class="modal">
+            <div class="encabezado-modal">
+                <h3>registrar nueva falta</h3>
+                <button class="boton-cerrar" id="cerrar-modal-falta">×</button>
+            </div>
+            <form class="formulario-falta" id="form-falta">
+                <div class="campo">
+                    <label for="fecha-falta">fecha de la falta</label>
+                    <input type="date" id="fecha-falta" name="fecha" required>
+                </div>
+                
+                <div class="campo">
+                    <label for="categoria-falta">categoría</label>
+                    <select id="categoria-falta" name="categoria" required>
+                        <option value="">seleccionar categoría</option>
+                        <option value="enfermedad">enfermedad</option>
+                        <option value="transporte">transporte</option>
+                        <option value="personal">asuntos personales</option>
+                        <option value="clima">clima</option>
+                        <option value="otro">otro</option>
+                    </select>
+                </div>
+                
+                <div class="campo">
+                    <label for="notas-falta">notas (opcional)</label>
+                    <textarea id="notas-falta" name="notas" placeholder="describe el motivo de la falta..."></textarea>
+                </div>
+                
+                <div class="acciones-modal">
+                    <button type="button" class="boton-secundario" id="cancelar-falta">cancelar</button>
+                    <button type="submit" class="boton-primario">guardar falta</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- modal detalles falta -->
+    <div class="modal-overlay" id="modal-detalles">
+        <div class="modal">
+            <div class="encabezado-modal">
+                <h3>detalles de la falta</h3>
+                <button class="boton-cerrar" id="cerrar-modal-detalles">×</button>
+            </div>
+            <div class="contenido-detalles">
+                <p><strong>fecha:</strong> <span id="detalle-fecha">15 de agosto, 2025</span></p>
+                <p><strong>categoría:</strong> <span id="detalle-categoria" class="badge enfermedad">enfermedad</span></p>
+                <p><strong>notas:</strong></p>
+                <p id="detalle-notas">dolor de cabeza muy fuerte, no pude asistir a clases</p>
+            </div>
+            <div class="acciones-modal">
+                <button class="boton-secundario">editar</button>
+                <button class="boton-eliminar">eliminar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/variables.js"></script>
+    <script src="js/funciones.js"></script>
+    <script src="js/calendario.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
